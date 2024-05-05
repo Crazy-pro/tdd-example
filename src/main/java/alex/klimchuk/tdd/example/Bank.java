@@ -8,18 +8,18 @@ import java.util.HashMap;
 class Bank {
     private final HashMap<Pair, Integer> rateMap = new HashMap<>();
 
-    Money reduce(Expression source, String toCurrency) {
-        return source.reduce(this, toCurrency);
+    Money reduce(final Expression source, final String currency) {
+        return source.reduce(this, currency);
     }
 
-    public int rate(String from, String to) {
-        if (from.equals(to)){
+    public int rate(final String from, final String to) {
+        if (from.equals(to)) {
             return 1;
         }
         return rateMap.get(new Pair(from, to));
     }
 
-    public void addRate(String from, String to, int rate) {
+    public void addRate(final String from, final String to, final int rate) {
         rateMap.put(new Pair(from, to), rate);
     }
 }
